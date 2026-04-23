@@ -356,6 +356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb81b6dc9102de439dc0ba3c7163f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Goal
+  ball: {fileID: 1570169810}
+  gameManager: {fileID: 649080922}
+  GoalIsPlayer1: 1
 --- !u!1 &570772434
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +484,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb81b6dc9102de439dc0ba3c7163f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Goal
+  ball: {fileID: 1570169810}
+  gameManager: {fileID: 649080922}
+  GoalIsPlayer1: 0
+--- !u!1 &649080921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 649080923}
+  - component: {fileID: 649080922}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &649080922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649080921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050ed0e80a78da3469335e93a33fc0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  ball: {fileID: 1570169810}
+  player1Score: 0
+  player2Score: 0
+--- !u!4 &649080923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649080921}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.14859, y: -1.93999, z: -2.57426}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +1302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c7ef010b17ce44bb3986a182770dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ball
-  initialSpeed: 10
+  initialSpeed: 30
+  score: 1
   player1: 0
   player2: 0
 --- !u!1 &2007457657
@@ -1379,3 +1433,4 @@ SceneRoots:
   - {fileID: 196551228}
   - {fileID: 570772438}
   - {fileID: 526384201}
+  - {fileID: 649080923}

@@ -1,5 +1,8 @@
 using NUnit.Framework;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.SettingsManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -8,6 +11,7 @@ public class Ball : MonoBehaviour
     public float initialSpeed;
 
     
+    public int score = 1;
     public  bool player1;
     public  bool player2;
 
@@ -30,11 +34,22 @@ public class Ball : MonoBehaviour
  
         rb.linearVelocity = dir * currentSpeed;
     }
+    IEnumerator LaunchCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        Launch();
+        
+    }
+    /*public void LaunchTheBall()
+    {
+        StartCoroutine(LaunchCoroutine());
+    }*/
     public void ResetBall()
     {
         rb.linearVelocity    =  Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         transform.position = Vector3.zero;
+        StartCoroutine(LaunchCoroutine());
     }
     void OnCollisionEnter(Collision collision)
     {

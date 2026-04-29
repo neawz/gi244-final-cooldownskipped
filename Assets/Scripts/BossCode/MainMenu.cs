@@ -1,30 +1,28 @@
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; 
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+   
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("Boss");
+    }
+
+    
+    public void OpenSettings()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    // ฟังก์ชันสำหรับปุ่ม Exit
+    public void Exit()
     {
-        
-    }
-
-    void play()
-    {
-        SceneManager.LoadSceneAsync(1);
-    }
-
-    void Exit()
-    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
         Application.Quit();
+#endif
     }
-
-
 }
-

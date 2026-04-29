@@ -1,28 +1,81 @@
 using NUnit.Framework;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.SettingsManagement;
 
 public class Ball : MonoBehaviour
 {
-    public Rigidbody rb ;
-    public float startSpeed;
+
+    [Header("Speed")]
+    public float initialSpeed;
+
+    
+    public int score = 1;
+    public  bool player1;
+    public  bool player2;
+
+    Rigidbody rb ;
+    float currentSpeed;
     void Start()
     {
-       Launch();
+        rb = GetComponent<Rigidbody>();
+        Launch();
     }
 
-    private void Launch()
+    void Launch()
     {
-        int x = Random.Range(0,2);
-        int z = Random.Range(0,2);
-        if (x == 0)
-        {
-            x = -1;
-        }
-        if (z == 0)
-        {
-            z = -1;
-        }
+        currentSpeed = initialSpeed;
+ 
+        // สุ่มทิศในแกน XZ ± 30°
+        float angle  = Random.Range(-30f, 30f) * Mathf.Deg2Rad;
+        float dirX   = Random.value > 0.5f ? 1f : -1f;
+        Vector3 dir  = new Vector3(dirX * Mathf.Cos(angle), 0f, Mathf.Sin(angle)).normalized;
+ 
+        rb.linearVelocity = dir * currentSpeed;
+    }
+    IEnumerator LaunchCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        Launch();
+        
+    }
+    /*public void LaunchTheBall()
+    {
+        StartCoroutine(LaunchCoroutine());
+    }*/
+    public void ResetBall()
+    {
+        rb.linearVelocity    =  Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        transform.position = Vector3.zero;
+        StartCoroutine(LaunchCoroutine());
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Player2")) return;
 
-        rb.linearVelocity = new Vector3(x*startSpeed, 0, z*startSpeed);
+        var player = collision.gameObject.GetComponent<PlayerController>();
+        float halfZ     = player ? player.GetHalfLength() : 0.5f;
+        float hitOffset = Mathf.Clamp(
+            (transform.position.z - collision.transform.position.z) / halfZ, -1f, 1f);
+ 
+        float bounceAngle = hitOffset * 50f * Mathf.Deg2Rad;
+        float dirX        = rb.linearVelocity.x > 0 ? -1f : 1f;
+        Vector3 newDir    = new Vector3(dirX * Mathf.Cos(bounceAngle), 0f, Mathf.Sin(bounceAngle)).normalized;
+
+        rb.linearVelocity = newDir * currentSpeed;
+
+
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            player1 = true;
+            player2 = false;
+        }
+        if(collision.gameObject.CompareTag("Player2"))
+        {
+            player1 = false;
+            player2 = true;
+        }
     }
 }

@@ -45,10 +45,10 @@ public class UIManager : MonoBehaviour
 
     private void UpdateScoreDisplay()
     {
-        if (GameManager.Instance != null)
+        if (GameManager.GetInstance() != null)
         {
-            p1ScoreText.text = GameManager.Instance.player1Score.ToString();
-            p2ScoreText.text = GameManager.Instance.player2Score.ToString();
+            p1ScoreText.text = GameManager.GetInstance().player1Score.ToString();
+            p2ScoreText.text = GameManager.GetInstance().player2Score.ToString();
         }
     }
 

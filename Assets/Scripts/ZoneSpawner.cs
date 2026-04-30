@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class ZoneSpawner : MonoBehaviour
 {
+    [SerializeField] private string zoneTag = "HighlightZone";
     [SerializeField] private float switchInterval = 5f;
     private readonly List<GameObject> zonePool = new();
 
@@ -18,12 +19,12 @@ public class ZoneSpawner : MonoBehaviour
 
     private void SpawnGoals()
     {
-        GameObject[] zoneGO = GameObject.FindGameObjectsWithTag("HighlightZone");
+        GameObject[] zoneGO = GameObject.FindGameObjectsWithTag(zoneTag);
         zone = zoneGO;
 
         foreach (var goal in zone)
         {
-            goal.SetActive(false);
+            SetZoneVisible(goal, false);
             zonePool.Add(goal);
         }
 
@@ -32,7 +33,7 @@ public class ZoneSpawner : MonoBehaviour
             int randomIndex = Random.Range(0, zonePool.Count);
             currentActiveZone = zonePool[randomIndex];
             zonePool.RemoveAt(randomIndex);
-            currentActiveZone.SetActive(true);
+            SetZoneVisible(currentActiveZone, true);
         }
     }
 
@@ -44,7 +45,7 @@ public class ZoneSpawner : MonoBehaviour
             
             if (currentActiveZone != null)
             {
-                currentActiveZone.SetActive(false);
+                SetZoneVisible(currentActiveZone, false);
                 zonePool.Add(currentActiveZone);
             }
             
@@ -53,8 +54,23 @@ public class ZoneSpawner : MonoBehaviour
                 int randomIndex = Random.Range(0, zonePool.Count);
                 currentActiveZone = zonePool[randomIndex];
                 zonePool.RemoveAt(randomIndex);
-                currentActiveZone.SetActive(true);
+                SetZoneVisible(currentActiveZone, true);
             }
+        }
+    }
+
+    private void SetZoneVisible(GameObject zoneObject, bool highlighted)
+    {
+        Renderer[] renderers = zoneObject.GetComponentsInChildren<Renderer>(true);
+        foreach (var renderer in renderers)
+        {
+            renderer.enabled = highlighted;
+        }
+
+        Goal goal = zoneObject.GetComponent<Goal>();
+        if (goal != null)
+        {
+            goal.isHighlighted = highlighted;
         }
     }
 }

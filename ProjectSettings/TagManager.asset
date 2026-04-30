@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Player2
   - Ball
+  - Highlight P1
+  - Highlight P2
   layers:
   - Default
   - TransparentFX

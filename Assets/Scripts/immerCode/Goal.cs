@@ -9,14 +9,17 @@ public class Goal : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ball") && isHighlighted)
+        if (other.gameObject.CompareTag("Ball") && !ball.hasScored)
         {
-            GameManager.GetInstance().ScoreUpdate(ball.score * 2, GoalIsPlayer1);
-            return;
-        }
-        else if (other.gameObject.CompareTag("Ball"))
-        {
-            GameManager.GetInstance().ScoreUpdate(ball.score, GoalIsPlayer1);
+            ball.hasScored = true;
+            if (isHighlighted)
+            {
+                GameManager.GetInstance().ScoreUpdate(ball.score * 2, GoalIsPlayer1);
+            }
+            else
+            {
+                GameManager.GetInstance().ScoreUpdate(ball.score, GoalIsPlayer1);
+            }
         }
     }
 }

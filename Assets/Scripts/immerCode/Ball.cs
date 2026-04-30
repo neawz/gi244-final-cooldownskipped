@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
     public int score = 1;
     public  bool player1;
     public  bool player2;
+    public bool hasScored = false;
 
     Rigidbody rb ;
     float currentSpeed;
@@ -49,6 +50,7 @@ public class Ball : MonoBehaviour
         rb.linearVelocity    =  Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         transform.position = Vector3.zero;
+        hasScored = false;
         StartCoroutine(LaunchCoroutine());
     }
     void OnCollisionEnter(Collision collision)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +39,12 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log($"Player1: {player1Score} | Player2: {player2Score}");
 
+        StartCoroutine(ResetBallAfterDelay());
+    }
+
+    private IEnumerator ResetBallAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
         ball.ResetBall();
     }
 }

@@ -1,104 +1,104 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
+// using UnityEngine;
+// using TMPro;
+// using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
-{
+// public class UIManager : MonoBehaviour
+// {
     
 
-    [Header("UI Text Elements")]
-    [SerializeField] private TextMeshProUGUI p1ScoreText;
-    [SerializeField] private TextMeshProUGUI p2ScoreText;
-    [SerializeField] private TextMeshProUGUI timerText;
+//     [Header("UI Text Elements")]
+//     [SerializeField] private TextMeshProUGUI p1ScoreText;
+//     [SerializeField] private TextMeshProUGUI p2ScoreText;
+//     [SerializeField] private TextMeshProUGUI timerText;
 
-    [Header("Panels")]
-    [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject summarizePanel;
-    [SerializeField] private TextMeshProUGUI winnerText;
+//     [Header("Panels")]
+//     [SerializeField] private GameObject pausePanel;
+//     [SerializeField] private GameObject summarizePanel;
+//     [SerializeField] private TextMeshProUGUI winnerText;
 
-    [Header("Settings")]
-    [SerializeField] private float gameTime = 60f; 
+//     [Header("Settings")]
+//     [SerializeField] private float gameTime = 60f; 
 
-    private float timeRemaining;
-    private bool isGameOver = false;
+//     private float timeRemaining;
+//     private bool isGameOver = false;
 
-    private void Awake()
-    {
-        timeRemaining = gameTime;
-    }
+//     private void Awake()
+//     {
+//         timeRemaining = gameTime;
+//     }
 
-    private void Update()
-    {
-        if (isGameOver) return;
+//     private void Update()
+//     {
+//         if (isGameOver) return;
 
-        HandleTimer();
+//         HandleTimer();
 
-        // ESC Pause
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePause();
-        }
+//         // ESC Pause
+//         if (Input.GetKeyDown(KeyCode.Escape))
+//         {
+//             TogglePause();
+//         }
 
-        // �ѻവ��ṹ�ҡ GameManager
-        UpdateScoreDisplay();
-    }
+//         // �ѻവ��ṹ�ҡ GameManager
+//         UpdateScoreDisplay();
+//     }
 
-    private void UpdateScoreDisplay()
-    {
-        if (GameManager.Instance != null)
-        {
-            p1ScoreText.text = GameManager.Instance.player1Score.ToString();
-            p2ScoreText.text = GameManager.Instance.player2Score.ToString();
-        }
-    }
+//     private void UpdateScoreDisplay()
+//     {
+//         if (GameManager.Instance != null)
+//         {
+//             p1ScoreText.text = GameManager.Instance.player1Score.ToString();
+//             p2ScoreText.text = GameManager.Instance.player2Score.ToString();
+//         }
+//     }
 
-    private void HandleTimer()
-    {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-            DisplayTime(timeRemaining);
-        }
-        else
-        {
-            timeRemaining = 0;
-            Time.timeScale = 0f;
+//     private void HandleTimer()
+//     {
+//         if (timeRemaining > 0)
+//         {
+//             timeRemaining -= Time.deltaTime;
+//             DisplayTime(timeRemaining);
+//         }
+//         else
+//         {
+//             timeRemaining = 0;
+//             Time.timeScale = 0f;
             
-        }
-    }
+//         }
+//     }
 
-    private void DisplayTime(float timeToDisplay)
-    {
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
+//     private void DisplayTime(float timeToDisplay)
+//     {
+//         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+//         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+//         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+//     }
 
-    public void TogglePause()
-    {
-        bool isPaused = !pausePanel.activeSelf;
-        pausePanel.SetActive(isPaused);
-        Time.timeScale = isPaused ? 0f : 1f; 
-    }
+//     public void TogglePause()
+//     {
+//         bool isPaused = !pausePanel.activeSelf;
+//         pausePanel.SetActive(isPaused);
+//         Time.timeScale = isPaused ? 0f : 1f; 
+//     }
 
-    public void Resume()
-    {
-        pausePanel.SetActive(false);
-        Time.timeScale = 1f;
-    }
+//     public void Resume()
+//     {
+//         pausePanel.SetActive(false);
+//         Time.timeScale = 1f;
+//     }
    
     
 
     
-    public void RestartGame()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+//     public void RestartGame()
+//     {
+//         Time.timeScale = 1f;
+//         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+//     }
 
-    public void MainMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
-    }
-}
+//     public void MainMenu()
+//     {
+//         Time.timeScale = 1f;
+//         SceneManager.LoadScene("MainMenu");
+//     }
+// }

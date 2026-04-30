@@ -1,18 +1,16 @@
 using UnityEngine;
 
 public class Goal : MonoBehaviour
-{   
+{
     [Header("REF")]
-    [SerializeField]private Ball ball;
-    [SerializeField]private GameManager gameManager;
-
+    [SerializeField] private Ball ball;
     [SerializeField] bool GoalIsPlayer1;
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Ball"))
+        if (other.gameObject.CompareTag("Ball"))
         {
-            gameManager.ScoreUpdate(ball.score,GoalIsPlayer1);
+            GameManager.GetInstance().ScoreUpdate(ball.score, GoalIsPlayer1);
         }
     }
 }

@@ -5,7 +5,7 @@ public class Buff : PowerUp
 {
     public float sizeMultiplier = 2f;
     public float buffDuration = 5f;
-    public override void EnablePowerUp(PlayerController player)
+    public override void EnablePowerUp(PlayerController player, PlayerController opponent)
     {
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;

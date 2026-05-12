@@ -1,16 +1,21 @@
+using System.Collections;
 using UnityEngine;
 
-public class Debuff : MonoBehaviour
+public class Debuff : PowerUp
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float debuffDuration = 5f;
+    public override void EnablePowerUp(PlayerController player, PlayerController opponent)
     {
-        
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        StartCoroutine(ApplyReverseDebuff(opponent));
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator ApplyReverseDebuff(PlayerController player)
     {
-        
+        player.ReverseControls();
+        yield return new WaitForSeconds(debuffDuration);
+        player.ReverseControls();
+        PowerUpObjectPool.GetInstance().ReturnObject(gameObject);
     }
 }

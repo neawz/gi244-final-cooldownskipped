@@ -16,13 +16,13 @@ public abstract class PowerUp : MonoBehaviour
         {
             if (other.GetComponent<Ball>().player1)
             {
-                EnablePowerUp(player1);
+                EnablePowerUp(player1, player2);
             }
             else if (other.GetComponent<Ball>().player2)
             {
-                EnablePowerUp(player2);
+                EnablePowerUp(player2, player1);
             }
         }
     }
-    public abstract void EnablePowerUp(PlayerController player);
+    public abstract void EnablePowerUp(PlayerController player, PlayerController opponent);
 }

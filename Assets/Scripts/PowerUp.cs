@@ -2,12 +2,12 @@ using UnityEngine;
 
 public abstract class PowerUp : MonoBehaviour
 {
-    private PlayerController player1;
-    private PlayerController player2;
+    private PlayerStatus player1;
+    private PlayerStatus player2;
     void Awake()
     {
-        player1 = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        player2 = GameObject.FindWithTag("Player2").GetComponent<PlayerController>();
+        player1 = GameObject.FindWithTag("Player").GetComponent<PlayerStatus>();
+        player2 = GameObject.FindWithTag("Player2").GetComponent<PlayerStatus>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -24,5 +24,5 @@ public abstract class PowerUp : MonoBehaviour
             }
         }
     }
-    public abstract void EnablePowerUp(PlayerController player, PlayerController opponent);
+    public abstract void EnablePowerUp(PlayerStatus player, PlayerStatus opponent);
 }

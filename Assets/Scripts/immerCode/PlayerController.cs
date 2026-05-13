@@ -41,4 +41,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(downKey)) dir -= 1f;
         return dir * moveSpeed;
     }
+
+    public void ReverseControls()
+    {
+        KeyCode temp = upKey;
+        upKey = downKey;
+        downKey = temp;
+    }
 }

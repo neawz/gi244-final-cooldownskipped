@@ -4,7 +4,7 @@ using UnityEngine;
 public class Debuff : PowerUp
 {
     public float debuffDuration = 5f;
-    public override void EnablePowerUp(PlayerController player, PlayerController opponent)
+    public override void EnablePowerUp(PlayerStatus player, PlayerStatus opponent)
     {
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
@@ -13,9 +13,9 @@ public class Debuff : PowerUp
 
     private IEnumerator ApplyReverseDebuff(PlayerController player)
     {
-        //player.ReverseControls();
+        player.ReverseControls();
         yield return new WaitForSeconds(debuffDuration);
-        //player.ReverseControls();
+        player.ReverseControls();
         PowerUpObjectPool.GetInstance().ReturnObject(gameObject);
     }
 }

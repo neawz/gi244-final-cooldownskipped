@@ -13,9 +13,9 @@ public class Debuff : PowerUp
 
     private IEnumerator ApplyReverseDebuff(PlayerController player)
     {
-        player.ReverseControls();
+        //player.ReverseControls();
         yield return new WaitForSeconds(debuffDuration);
-        player.ReverseControls();
+        //player.ReverseControls();
         PowerUpObjectPool.GetInstance().ReturnObject(gameObject);
     }
 }

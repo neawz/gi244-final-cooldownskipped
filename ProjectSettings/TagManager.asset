@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Highlight P1
   - Highlight P2
+  - Breakable
   layers:
   - Default
   - TransparentFX

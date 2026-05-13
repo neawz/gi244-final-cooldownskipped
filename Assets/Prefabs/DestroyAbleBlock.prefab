@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 488209798145822041}
   - component: {fileID: 2653208519632563878}
   - component: {fileID: 7678517346753947861}
+  - component: {fileID: -5804750788348808019}
   m_Layer: 0
-  m_Name: DestroyAbleBlock
-  m_TagString: Untagged
+  m_Name: DestroyableBlock
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +99,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046616893062536991}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0ad6307e0d7ebe940b7dc596526d0922, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -112,3 +113,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5804750788348808019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046616893062536991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85159e32fc6630a46964a4a52584e4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableBlock

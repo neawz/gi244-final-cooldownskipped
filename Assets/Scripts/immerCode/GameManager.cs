@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class GameManager : MonoBehaviour
     public int player1Score = 0;
     public int player2Score = 0;
 
+    [Header("Game Over")]
+    public Button PlayAgainButton;
+
     private static GameManager instance;
     public static GameManager GetInstance()
     {
@@ -21,11 +26,17 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+
+        PlayAgainButton.onClick.AddListener(() =>
+        {
+            // SoundManager.GetInstance().()PlaySound2D("Click");
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("Main");
+        });
     }
     public void ScoreUpdate(int ballScore, bool GoalIsPlayer1)
     {

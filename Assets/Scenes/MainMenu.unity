@@ -2194,9 +2194,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicLibrary
   tracks:
   - trackName: MainMenu
-    clip: {fileID: 8300000, guid: 84b6de248733edf42a66a296ea4a2114, type: 3}
+    clip: {fileID: 8300000, guid: 34432e86fc5d445418ea1daf3e24de15, type: 3}
   - trackName: Game
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 84b6de248733edf42a66a296ea4a2114, type: 3}
 --- !u!1 &1283717314
 GameObject:
   m_ObjectHideFlags: 0

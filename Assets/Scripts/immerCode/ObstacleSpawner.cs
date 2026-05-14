@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 
@@ -13,7 +14,8 @@ public class ObstacleSpawner : MonoBehaviour
     [Header("Spawn Points")]
     [SerializeField] List<Transform> spawnPoints = new();
 
-    [Header("Spawn Count")]
+    [Header("Spawn in Match Setting")]
+    public float spawnInterval = 7f;
     [SerializeField] int breakableCount = 3;
     [SerializeField] int permanentCount = 2;
 
@@ -29,11 +31,24 @@ public class ObstacleSpawner : MonoBehaviour
         }
         instance = this;
     }
-    void Start() => SpawnAll();
+    void Start()
+    {
+        SpawnAll();
+        StartCoroutine(SpawnRoutine());
+    }
+        
     public void RespawnAll()
     {
         ReturnAll();
         SpawnAll();
+    }
+    IEnumerator SpawnRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnInterval);
+            RespawnAll();
+        }
     }
 
     public void ReturnBreakable(GameObject go)

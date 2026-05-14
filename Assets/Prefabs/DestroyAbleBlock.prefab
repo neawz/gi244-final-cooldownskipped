@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7678517346753947861}
   - component: {fileID: -5804750788348808019}
   m_Layer: 0
-  m_Name: DestroyableBlock
+  m_Name: DestroyAbleBlock
   m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.015894, y: -1.4399977, z: -8.822068}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 2, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

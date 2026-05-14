@@ -114,4 +114,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Buff
   sizeMultiplier: 2
-  buffDuration: 10
+  buffDuration: 5

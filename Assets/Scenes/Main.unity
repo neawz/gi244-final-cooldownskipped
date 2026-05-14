@@ -2793,7 +2793,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawner
   spawnPoints:
-  - {fileID: 1040844892}
   - {fileID: 1701575359}
   - {fileID: 1438261462}
   - {fileID: 1156582438}
@@ -4065,7 +4064,6 @@ MonoBehaviour:
   ball: {fileID: 912790740}
   player1Score: 0
   player2Score: 0
-  PlayAgainButton: {fileID: 0}
 --- !u!4 &929450901
 Transform:
   m_ObjectHideFlags: 0
@@ -4177,37 +4175,6 @@ Transform:
   - {fileID: 438946887}
   - {fileID: 94287489}
   m_Father: {fileID: 165118736}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1040844891
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1040844892}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1040844892
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040844891}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2061482652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1067141028
 GameObject:
@@ -7265,7 +7232,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1040844892}
   - {fileID: 1701575359}
   - {fileID: 1438261462}
   - {fileID: 1156582438}
@@ -7622,8 +7588,8 @@ SceneRoots:
   - {fileID: 1947846979}
   - {fileID: 339916568}
   - {fileID: 2061482652}
-  - {fileID: 644248437}
   - {fileID: 579696084}
+  - {fileID: 644248437}
   - {fileID: 929450901}
   - {fileID: 1926317003}
   - {fileID: 1376690295}

@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
 
     Rigidbody rb;
-    float halfLength;
+    public float halfLength;
     public float GetHalfLength()=> halfLength;
     void Awake()
     {
@@ -26,11 +26,11 @@ public class PlayerController : MonoBehaviour
     {
         float inputZ = GetPlayerInput();
 
-        float newZ = Mathf.Clamp(
-            rb.position.z + inputZ * Time.fixedDeltaTime,
-            -zLimit + halfLength,
-             zLimit - halfLength);
- 
+        float newZ = Mathf.Clamp(rb.position.z + inputZ * Time.fixedDeltaTime,
+        -zLimit + halfLength,
+        zLimit - halfLength);
+        
+        
         transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
     }
 

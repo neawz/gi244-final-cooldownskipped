@@ -14,6 +14,15 @@ public class MainMenu : MonoBehaviour
     {
         LoadVolume();
         MusicManager.GetInstance().PlayMusic("MainMenu");
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            UpdateMusicVolume();
+            UpdateSoundVolume();
+        }
     }
     public void PlayGame()
     {
@@ -32,7 +41,7 @@ public class MainMenu : MonoBehaviour
         settingPanel.SetActive(false);
     }
 
-    // ¿Ñ§¡ìªÑ¹ÊÓËÃÑº»ØèÁ Exit
+    // ï¿½Ñ§ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½Ñºï¿½ï¿½ï¿½ï¿½ Exit
     public void Exit()
     {
 #if UNITY_EDITOR
@@ -42,28 +51,26 @@ public class MainMenu : MonoBehaviour
 #endif
     }
 
-    public void UpdateMusicVolume(float volume)
+    public void UpdateMusicVolume()
     {
-        audioMixer.SetFloat("MusicVolume", volume);
+        float volume = musicSlider.value;
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume)*20);
+        PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
-    public void UpdateSoundVolume(float volume)
+    public void UpdateSoundVolume()
     {
-        audioMixer.SetFloat("SFXVolume", volume);
+        float volume = sfxSlider.value;
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume)*20);
+        PlayerPrefs.SetFloat("SFXVolume", volume);
     }
 
-    public void SaveVolume()
-    {
-        audioMixer.GetFloat("MusicVolume", out float musicVolume);
-        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
-
-        audioMixer.GetFloat("SFXVolume", out float sfxVolume);
-        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
-    }
-
-    public void LoadVolume()
+    private void LoadVolume()
     {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        
+        UpdateMusicVolume();
+        UpdateSoundVolume();
     }
 }

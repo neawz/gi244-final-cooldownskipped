@@ -1,24 +1,30 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    
+
     private static UIManager instance;
 
-    [Header("UI Text Elements")]
+    [Header("UI Elements")]
+    [SerializeField] private GameObject HUDPanel;
     [SerializeField] private TextMeshProUGUI p1ScoreText;
     [SerializeField] private TextMeshProUGUI p2ScoreText;
     [SerializeField] private TextMeshProUGUI timerText;
 
-    [Header("Panels")]
+    [Header("Pause Menu")]
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject summarizePanel;
-    [SerializeField] private TextMeshProUGUI winnerText;
 
     [Header("Settings")]
-    [SerializeField] private float gameTime = 60f; 
+    [SerializeField] private float gameTime = 60f;
+
+    [Header("Game Over")]
+    [SerializeField] private GameObject summarizePanel;
+    [SerializeField] private TextMeshProUGUI p1FinalScoreText;
+    [SerializeField] private TextMeshProUGUI p2FinalScoreText;
+    [SerializeField] private TextMeshProUGUI winnerText;
 
     private float timeRemaining;
     private bool isGameOver = false;
@@ -27,18 +33,17 @@ public class UIManager : MonoBehaviour
     {
         return instance;
     }
-    
+
     private void Awake()
     {
         timeRemaining = gameTime;
 
         if (instance != null)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
@@ -47,13 +52,11 @@ public class UIManager : MonoBehaviour
 
         HandleTimer();
 
-        // ESC Pause
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
         }
 
-        // �ѻവ��ṹ�ҡ GameManager
         UpdateScoreDisplay();
     }
 
@@ -78,6 +81,7 @@ public class UIManager : MonoBehaviour
             timeRemaining = 0;
             Time.timeScale = 0f;
             isGameOver = true;
+            ShowSummarize();
         }
     }
 
@@ -92,7 +96,7 @@ public class UIManager : MonoBehaviour
     {
         bool isPaused = !pausePanel.activeSelf;
         pausePanel.SetActive(isPaused);
-        Time.timeScale = isPaused ? 0f : 1f; 
+        Time.timeScale = isPaused ? 0f : 1f;
     }
 
     public void Resume()
@@ -100,10 +104,7 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
     }
-   
-    
 
-    
     public void RestartGame()
     {
         Time.timeScale = 1f;
@@ -114,5 +115,31 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void ShowSummarize()
+    {
+        Time.timeScale = 0f;
+        HUDPanel.SetActive(false);
+        summarizePanel.SetActive(true);
+
+        int p1 = GameManager.GetInstance().player1Score;
+        int p2 = GameManager.GetInstance().player2Score;
+
+        if (p1 > p2)
+        {
+            winnerText.text = "Player 1 Wins!";
+        }
+        else if (p2 > p1)
+        {
+            winnerText.text = "Player 2 Wins!";
+        }
+        else
+        {
+            winnerText.text = "It's a Draw!";
+        }
+
+        p1FinalScoreText.text = $"{p1}";
+        p2FinalScoreText.text = $"{p2}";
     }
 }

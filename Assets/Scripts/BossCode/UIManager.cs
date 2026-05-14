@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     
+    private static UIManager instance;
 
     [Header("UI Text Elements")]
     [SerializeField] private TextMeshProUGUI p1ScoreText;
@@ -22,9 +23,22 @@ public class UIManager : MonoBehaviour
     private float timeRemaining;
     private bool isGameOver = false;
 
+    public static UIManager GetInstance()
+    {
+        return instance;
+    }
+    
     private void Awake()
     {
         timeRemaining = gameTime;
+
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
@@ -63,7 +77,7 @@ public class UIManager : MonoBehaviour
         {
             timeRemaining = 0;
             Time.timeScale = 0f;
-            
+            isGameOver = true;
         }
     }
 

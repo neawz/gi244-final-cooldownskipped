@@ -2157,15 +2157,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundLibrary
   soundEffects:
   - nameID: Goal
-    clips: {fileID: 0}
+    clips: {fileID: 8300000, guid: 5a01c98bd98b5e64a8b6a0c5bb27bb41, type: 3}
   - nameID: PowerUP
-    clips: {fileID: 0}
+    clips: {fileID: 8300000, guid: 8fc53f4064c46be4d87d68e29e3ce1bc, type: 3}
   - nameID: Click
-    clips: {fileID: 0}
+    clips: {fileID: 8300000, guid: fdd7f649a39795f4e919efac3d8f32e4, type: 3}
   - nameID: BreakBlock
-    clips: {fileID: 0}
-  - nameID: "B\u0E3Aounce"
-    clips: {fileID: 0}
+    clips: {fileID: 8300000, guid: 91e682a943a2539448d8dcb313b9eec6, type: 3}
+  - nameID: Bounce
+    clips: {fileID: 8300000, guid: fdd7f649a39795f4e919efac3d8f32e4, type: 3}
 --- !u!114 &1237438504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2958,7 +2958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 327, y: 252}
+  m_AnchoredPosition: {x: 268, y: 252}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775926620

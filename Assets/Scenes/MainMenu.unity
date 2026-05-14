@@ -2156,9 +2156,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundLibrary
   soundEffects:
-  - nameID: 
+  - nameID: Goal
     clips: {fileID: 0}
-  - nameID: 
+  - nameID: PowerUP
+    clips: {fileID: 0}
+  - nameID: Click
+    clips: {fileID: 0}
+  - nameID: BreakBlock
+    clips: {fileID: 0}
+  - nameID: "B\u0E3Aounce"
     clips: {fileID: 0}
 --- !u!114 &1237438504
 MonoBehaviour:

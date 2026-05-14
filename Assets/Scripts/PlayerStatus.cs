@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -42,7 +43,12 @@ public class PlayerStatus : MonoBehaviour
             originalScale.z * sizeMultiplier
         );
 
+        var half = GetComponent<PlayerController>().halfLength;
+        GetComponent<PlayerController>().halfLength = half * sizeMultiplier;
+
         yield return new WaitForSeconds(duration);
+
+        GetComponent<PlayerController>().halfLength = half;
 
         transform.localScale = originalScale;
         buffCoroutine = null;

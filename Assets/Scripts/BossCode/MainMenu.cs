@@ -27,18 +27,21 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         MusicManager.GetInstance().PlayMusic("Game");
-        SceneManager.LoadScene("Boss");
+        SceneManager.LoadScene("Main");
+        SoundManager.GetInstance().PlaySound2D("Click");
     }
 
     
     public void OpenSettings()
     {
         settingPanel.SetActive(true);
+        SoundManager.GetInstance().PlaySound2D("Click");
     }
 
     public void CloseSettings()
     {
         settingPanel.SetActive(false);
+        SoundManager.GetInstance().PlaySound2D("Click");
     }
 
     // �ѧ��ѹ����Ѻ���� Exit

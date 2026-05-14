@@ -11,6 +11,7 @@ public class Goal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball") && !ball.hasScored)
         {
+            SoundManager.GetInstance().PlaySound2D("Goal");
             ball.hasScored = true;
             if (isHighlighted)
             {

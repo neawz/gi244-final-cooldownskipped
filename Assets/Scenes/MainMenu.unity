@@ -2166,6 +2166,8 @@ MonoBehaviour:
     clips: {fileID: 8300000, guid: 91e682a943a2539448d8dcb313b9eec6, type: 3}
   - nameID: Bounce
     clips: {fileID: 8300000, guid: fdd7f649a39795f4e919efac3d8f32e4, type: 3}
+  - nameID: GameOver
+    clips: {fileID: 8300000, guid: f68080e5bffca0e4fa4599de0fe14cb0, type: 3}
 --- !u!114 &1237438504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2326,6 +2328,18 @@ MonoBehaviour:
       - m_Target: {fileID: 509569408}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: UpdateSoundVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 509569408}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Clicled
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

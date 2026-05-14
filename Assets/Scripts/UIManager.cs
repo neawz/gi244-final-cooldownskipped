@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
             isGameOver = true;
             ShowSummarize();
+
         }
     }
 
@@ -97,28 +98,34 @@ public class UIManager : MonoBehaviour
         bool isPaused = !pausePanel.activeSelf;
         pausePanel.SetActive(isPaused);
         Time.timeScale = isPaused ? 0f : 1f;
+        SoundManager.GetInstance().PlaySound2D("Click");
     }
 
     public void Resume()
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+        SoundManager.GetInstance().PlaySound2D("Click");
+
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SoundManager.GetInstance().PlaySound2D("Click");
     }
 
     public void MainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+        SoundManager.GetInstance().PlaySound2D("Click");
     }
 
     void ShowSummarize()
     {
+        SoundManager.GetInstance().PlaySound2D("GameOver");
         Time.timeScale = 0f;
         HUDPanel.SetActive(false);
         summarizePanel.SetActive(true);

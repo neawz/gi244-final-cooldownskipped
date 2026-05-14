@@ -39,7 +39,7 @@ public class SoundManager : MonoBehaviour
     {
         sfx2DSource.PlayOneShot(sfxLibrary.GetClipFromName(soundName));
     }
-
+    
 
 
 }

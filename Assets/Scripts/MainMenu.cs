@@ -76,4 +76,9 @@ public class MainMenu : MonoBehaviour
         UpdateMusicVolume();
         UpdateSoundVolume();
     }
+    
+    public void Clicled()
+    {
+        SoundManager.GetInstance().PlaySound2D("Click");
+    }
 }

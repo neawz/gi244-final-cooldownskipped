@@ -55,6 +55,7 @@ public class Ball : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+        SoundManager.GetInstance().PlaySound2D("Bounce");
         if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Player2")) return;
 
         var player = collision.gameObject.GetComponent<PlayerController>();

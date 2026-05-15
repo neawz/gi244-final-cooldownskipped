@@ -15,6 +15,7 @@ public abstract class PowerUp : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             SoundManager.GetInstance().PlaySound2D("PowerUP");
+            VfxPool.Getinstance().PlaceGetPowerUp(VfxPool.Getinstance().GetPowerUp(),this.transform.position);
             if (other.GetComponent<Ball>().player1)
             {
                 EnablePowerUp(player1, player2);

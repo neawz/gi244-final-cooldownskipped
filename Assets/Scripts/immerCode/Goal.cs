@@ -12,6 +12,7 @@ public class Goal : MonoBehaviour
         if (other.gameObject.CompareTag("Ball") && !ball.hasScored)
         {
             SoundManager.GetInstance().PlaySound2D("Goal");
+            VfxPool.Getinstance().PlaceGoalIn(VfxPool.Getinstance().GetGoalIn(),this.transform.position);
             ball.hasScored = true;
             if (isHighlighted)
             {

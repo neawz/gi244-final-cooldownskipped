@@ -44,6 +44,10 @@ public class PlayerStatus : MonoBehaviour
         );
 
         var half = GetComponent<PlayerController>().halfLength;
+        if (buffCoroutine != null)
+        {
+            GetComponent<PlayerController>().halfLength = half;
+        }
         GetComponent<PlayerController>().halfLength = half * sizeMultiplier;
 
         yield return new WaitForSeconds(duration);

@@ -4948,6 +4948,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 919672330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1275050251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275050253}
+  - component: {fileID: 1275050252}
+  m_Layer: 0
+  m_Name: VFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1275050252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275050251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9292a820a199737499a54217424d449f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VfxPool
+  pongHitPrefab: {fileID: 4306488877223958017, guid: ecb38e0319a6ad44cbca52d7b5add7a6, type: 3}
+  PongHitPoolSize: 3
+  PowerUpPrefab: {fileID: 883860442315605253, guid: d1430ed7ade977541b3d2f43db9d21b7, type: 3}
+  PowerUpPoolSize: 2
+  GoalInPrefab: {fileID: 4860994150677273561, guid: 022ce7b3e8f5ae84bb0a42e981a03304, type: 3}
+  GoalInPoolSize: 2
+  activeVfx: {fileID: 0}
+--- !u!4 &1275050253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275050251}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.8, y: -1.94, z: -0.77862}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1304403819
 GameObject:
   m_ObjectHideFlags: 0
@@ -7594,3 +7645,4 @@ SceneRoots:
   - {fileID: 929450901}
   - {fileID: 1926317003}
   - {fileID: 1376690295}
+  - {fileID: 1275050253}

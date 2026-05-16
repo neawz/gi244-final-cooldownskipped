@@ -45,9 +45,11 @@ public class VfxPool : MonoBehaviour
 
     public void ReturnPongHit(GameObject go) => Return(go, PongHitPool);
     public void ReturnGetPowerUp(GameObject go) => Return(go, PowerUpPool);
-    public void ReturnGolIn(GameObject go) => Return(go, GoalInPool);
+    public void ReturnGoalIn(GameObject go) => Return(go, GoalInPool);
 
-    [SerializeField]private GameObject activeVfx;
+    private GameObject activePongHit;
+    private GameObject activePowerUp;
+    private GameObject activeGoalIn;
 
     void FillPool(GameObject prefab, int size, List<GameObject> pool)
     {
@@ -58,38 +60,38 @@ public class VfxPool : MonoBehaviour
             pool.Add(go);
         }
     }
-    public void PlacePoneHit(GameObject go, Vector3 pos)
+    public void PlacePongHit(GameObject go, Vector3 pos)
     {
         go.transform.position = pos;
         go.transform.SetParent(null);
 
-        if(activeVfx != null)
+        if(activePongHit != null)
         {
-            ReturnPongHit(activeVfx);
+            ReturnPongHit(activePongHit);
         }
-        activeVfx = go;
+        activePongHit = go;
     }
     public void PlaceGetPowerUp(GameObject go, Vector3 pos)
     {
         go.transform.position = pos;
         go.transform.SetParent(null);
 
-        if(activeVfx != null)
+        if(activePowerUp != null)
         {
-            ReturnGetPowerUp(activeVfx);
+            ReturnGetPowerUp(activePowerUp);
         }
-        activeVfx = go;
+        activePowerUp = go;
     }
     public void PlaceGoalIn(GameObject go, Vector3 pos)
     {
         go.transform.position = pos;
         go.transform.SetParent(null);
 
-        if(activeVfx != null)
+        if(activeGoalIn != null)
         {
-            ReturnGolIn(activeVfx);
+            ReturnGoalIn(activeGoalIn);
         }
-        activeVfx = go;
+        activeGoalIn = go;
     }
 
     GameObject Get(List<GameObject> pool, GameObject prefab)

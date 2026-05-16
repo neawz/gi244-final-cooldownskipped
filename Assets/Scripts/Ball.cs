@@ -56,7 +56,7 @@ public class Ball : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         SoundManager.GetInstance().PlaySound2D("Bounce");
-        VfxPool.Getinstance().PlacePoneHit(VfxPool.Getinstance().GetPongHit(),this.transform.position);
+        VfxPool.Getinstance().PlacePongHit(VfxPool.Getinstance().GetPongHit(),this.transform.position);
 
         if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Player2")) return;
 
